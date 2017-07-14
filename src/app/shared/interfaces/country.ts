@@ -1,7 +1,7 @@
 export interface ICountry {
     ID: string;
     Name: string;
-    Language: string;
+    Languages: string;
     Responsiveness: string;
     LastUpdate: string;
     SimNeeded112: string;
