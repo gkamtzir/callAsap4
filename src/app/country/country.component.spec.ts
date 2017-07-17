@@ -9,9 +9,11 @@ describe('Component: CountryComponent', () => {
     let de;
 
     beforeEach(() => {
+
         TestBed.configureTestingModule({
             declarations: [ CountryComponent ]
         }).compileComponents();
+        
     });
 
     beforeEach(() => {
