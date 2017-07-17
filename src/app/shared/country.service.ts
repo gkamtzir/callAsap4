@@ -30,14 +30,7 @@ export class CountryService {
                     .catch(this.handleError);
     }
 
-    getCountry(country: ICountry): Observable<ICountry> {
-        return this._http
-        .get('http://83.212.115.201/api.php/country/' + country.Name)
-                    .map((response: Response) => <ICountry>response.json())
-                    .catch(this.handleError);
-    }
-
-    getCountryString(country: string): Observable<ICountry> {
+    getCountry(country: string): Observable<ICountry> {
         return this._http
                     .get('http://83.212.115.201/api.php/country/' + country)
                     .map((response: Response) => <ICountry>response.json())

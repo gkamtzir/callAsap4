@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
                 countryName => {
 
                     this.countryName = countryName;
-                    this._countryService.getCountryString(this.countryName.country_name)
+                    this._countryService.getCountry(this.countryName.country_name)
                         .subscribe(
                             country => {
                                 this.country = country;
