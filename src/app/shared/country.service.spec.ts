@@ -3,7 +3,7 @@ import { CountryService } from './country.service';
 import { XHRBackend, HttpModule, Http, Response, ResponseOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-import { ICountryName, ICountry } from './interfaces/country';
+import { ICountryName, ICountry, IEmergencyPhoneNumber } from './interfaces/country';
 
 describe('CountryService', () => {
 
@@ -27,7 +27,18 @@ describe('CountryService', () => {
 
     describe('getCountryName()', () => {
 
+        it('should be defined', () => {
+
+            const spy = spyOn(countryService, 'getCountryName').and.callThrough();
+
+            expect(countryService.getCountryName).toBeDefined();
+            expect(countryService.getCountryName).not.toHaveBeenCalled();
+
+        });
+
         it('should return an Observable<ICountryName>', () => {
+
+            const spy = spyOn(countryService, 'getCountryName').and.callThrough();
 
             let response: ICountryName = {
                 ip: '111.222.333.333',
@@ -50,6 +61,8 @@ describe('CountryService', () => {
             countryService.getCountryName()
                 .subscribe(country => {
 
+                    expect(countryService.getCountryName).toHaveBeenCalled();
+
                     expect(country.ip).toEqual('111.222.333.333');
                     expect(country.country_code).toEqual('XN');
                     expect(country.country_name).toEqual('Xen');
@@ -70,7 +83,18 @@ describe('CountryService', () => {
 
     describe('getCountries()', () => {
 
+        it('should be defined', () => {
+
+            const spy = spyOn(countryService, 'getCountries').and.callThrough();
+
+            expect(countryService.getCountries).toBeDefined();
+            expect(countryService.getCountries).not.toHaveBeenCalled();
+
+        });
+
         it('should return an Observable<ICountry[]>', () => {
+
+            const spy = spyOn(countryService, 'getCountries').and.callThrough();
 
             let response: ICountry[] = [
                 {
@@ -100,6 +124,8 @@ describe('CountryService', () => {
             countryService.getCountries()
                 .subscribe(countries => {
 
+                    expect(countryService.getCountries).toHaveBeenCalled();
+
                     expect(countries[0].ID).toEqual('12');
                     expect(countries[0].Name).toEqual('Greece');
                     expect(countries[0].Languages).toEqual('Greek, English, French');
@@ -118,6 +144,162 @@ describe('CountryService', () => {
 
 
                 });
+
+        });
+
+    });
+
+    describe('getCountry()', () => {
+
+        it('should be defined', () => {
+
+            const spy = spyOn(countryService, 'getCountry').and.callThrough();
+
+            expect(countryService.getCountry).toBeDefined();
+            expect(countryService.getCountry).not.toHaveBeenCalled();
+
+        });
+
+        it('should return an Observable<ICountry>', () => {
+
+            const spy = spyOn(countryService, 'getCountry').and.callThrough();
+
+            let response: ICountry = {
+                 ID : '15',
+                 Name : 'Italy',
+                 Languages : 'Italian, English, French, German, and in some cases Slovenian',
+                 Responsiveness : '6',
+                 LastUpdate : '2016-07-18',
+                 SimNeeded112 : 'Unknown',
+                 OnlyNumber : 'No'
+            };
+
+            let country: string = 'italy';
+
+            mockBackend.connections.subscribe(connection =>  {
+                connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
+            });
+
+            countryService.getCountry(country)
+                .subscribe(countryResponse => {
+
+                    expect(countryService.getCountry).toHaveBeenCalledWith(country);
+
+                    expect(countryResponse.ID).toEqual('15');
+                    expect(countryResponse.Name).toEqual('Italy');
+                    expect(countryResponse.Languages).toEqual('Italian, English, French, German, and in some cases Slovenian');
+                    expect(countryResponse.Responsiveness).toEqual('6');
+                    expect(countryResponse.LastUpdate).toEqual('2016-07-18');
+                    expect(countryResponse.SimNeeded112).toEqual('Unknown');
+                    expect(countryResponse.OnlyNumber).toEqual('No');
+
+                });
+
+        });
+
+        it('should retrun false when a specified country does not exist in the API', () => {
+
+            const spy = spyOn(countryService, 'getCountry').and.callThrough();
+
+            let response: boolean = false;
+
+            let country: string = 'japan';
+
+            mockBackend.connections.subscribe(connection => {
+                connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
+            });
+
+            countryService.getCountry(country)
+                .subscribe(response => {
+
+                    expect(countryService.getCountry).toHaveBeenCalledWith(country);
+
+                    expect(response).toBeFalsy();
+
+                });
+
+        });
+
+    });
+
+    describe('getEmergencyPhoneNumbers()', () => {
+
+        it('should be defined', () => {
+
+            const spy = spyOn(countryService, 'getEmergencyPhoneNumbers').and.callThrough();
+
+            expect(countryService.getEmergencyPhoneNumbers).toBeDefined();
+            expect(countryService.getEmergencyPhoneNumbers).not.toHaveBeenCalled();
+
+        });
+
+        it('should return an Observable<IEmergencyPhoneNumber[]> when called with a valid country', () => {
+
+            const spy = spyOn(countryService, 'getEmergencyPhoneNumbers').and.callThrough();
+
+            let response: IEmergencyPhoneNumber[] = [
+                {
+                    Type: 'Police Emergency',
+                    Number: '110',
+                    LastUpdate: '2016-07-18'
+                }
+            ];
+
+            let country: ICountry = {
+                ID: '11',
+                Name: 'Germany',
+                Languages: 'German, and other EU languages',
+                Responsiveness: 'Unknown',
+                LastUpdate: '2016-07-18',
+                SimNeeded112: 'Yes',
+                OnlyNumber: 'No'
+            };
+
+            mockBackend.connections.subscribe(connection => {
+                connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
+            });
+
+            countryService.getEmergencyPhoneNumbers(country)
+                .subscribe(emergencyPhoneNumbers => {
+
+                    expect(countryService.getEmergencyPhoneNumbers).toHaveBeenCalledWith(country);
+
+                    expect(emergencyPhoneNumbers[0].Type).toEqual('Police Emergency');
+                    expect(emergencyPhoneNumbers[0].Number).toEqual('110');
+                    expect(emergencyPhoneNumbers[0].LastUpdate).toEqual('2016-07-18');
+
+                })
+
+        });
+
+        it('should return an empty array when called with an invalid country name or the country does not exist in the API', () => {
+
+            const spy = spyOn(countryService, 'getEmergencyPhoneNumbers').and.callThrough();
+
+            let response: object[] = [];
+
+            let country: ICountry = {
+                ID: '99',
+                Name: 'Japan',
+                Languages: 'Unknown',
+                Responsiveness: 'Unknown',
+                LastUpdate: 'Unknown',
+                SimNeeded112: 'Unknown',
+                OnlyNumber: 'Unknown'
+            };
+
+            mockBackend.connections.subscribe(connection => {
+                connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
+            });
+
+            countryService.getEmergencyPhoneNumbers(country)
+                .subscribe(response => {
+
+                    expect(countryService.getEmergencyPhoneNumbers).toHaveBeenCalledWith(country);
+
+                    expect(response).toEqual([]);
+
+                })
 
         });
 
