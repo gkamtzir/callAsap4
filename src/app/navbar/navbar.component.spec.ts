@@ -18,7 +18,8 @@ describe('Component: NavbarComponent', () => {
 
     beforeEach(() => {
 
-        navbar = TestBed.createComponent(NavbarComponent);
+        fixture = TestBed.createComponent(NavbarComponent);
+        navbar = fixture.componentInstance;
 
     });
 

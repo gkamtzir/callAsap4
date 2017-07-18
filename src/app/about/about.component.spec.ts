@@ -14,8 +14,8 @@ describe('Component: AboutComponent', () => {
 
     beforeEach(() => {
 
-        about = TestBed.createComponent(AboutComponent);
-        fixture = about.componentInstance;
+        fixture = TestBed.createComponent(AboutComponent);
+        about = fixture.componentInstance;
 
     });
 

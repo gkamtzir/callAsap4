@@ -22,8 +22,8 @@ describe('Component: SearchComponent', () => {
 
     beforeEach(() => {
 
-        search = TestBed.createComponent(SearchComponent);
-        fixture = search.componentInstance;
+        fixture = TestBed.createComponent(SearchComponent);
+        search = fixture.componentInstance;
 
     });
 
