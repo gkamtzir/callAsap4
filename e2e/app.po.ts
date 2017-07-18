@@ -1,11 +1,11 @@
 import { browser, by, element } from 'protractor';
 
-export class CallAsap4Page {
+export class HomePage {
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element.all(by.css('h1')).first().getText();
   }
 }

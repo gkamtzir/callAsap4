@@ -1,14 +1,14 @@
-import { CallAsap4Page } from './app.po';
+import { HomePage } from './app.po';
 
 describe('call-asap4 App', () => {
-  let page: CallAsap4Page;
+  let page: HomePage;
 
   beforeEach(() => {
-    page = new CallAsap4Page();
+    page = new HomePage();
   });
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(page.getParagraphText()).toEqual('What is your emergency?');
   });
 });
