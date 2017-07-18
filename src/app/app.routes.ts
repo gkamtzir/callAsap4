@@ -6,5 +6,6 @@ import { AboutComponent } from './about/about.component';
 export const AppRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'search', component: SearchComponent },
-    { path: 'about', component: AboutComponent }
+    { path: 'about', component: AboutComponent },
+    { path: '**', component: HomeComponent}
 ];
