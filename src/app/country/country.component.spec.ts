@@ -13,7 +13,7 @@ describe('Component: CountryComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ CountryComponent ]
         }).compileComponents();
-        
+
     });
 
     beforeEach(() => {
@@ -31,7 +31,7 @@ describe('Component: CountryComponent', () => {
 
     });
 
-    it('should not display anything when country is not specified', () => {
+    it('should not display anything when country is not specified', async(() => {
 
         country.country = {};
 
@@ -43,7 +43,7 @@ describe('Component: CountryComponent', () => {
 
         });
 
-    });
+    }));
 
     it('should display country\'s information and country\'s emergency phone numbers', async(() => {
 
