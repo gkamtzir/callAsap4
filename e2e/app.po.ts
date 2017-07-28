@@ -5,7 +5,7 @@ export class HomePage {
     return browser.get('/');
   }
 
-  getParagraphText() {
+  getPageHeader() {
     return element.all(by.css('h1')).first().getText();
   }
 }

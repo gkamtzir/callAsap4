@@ -1,6 +1,6 @@
 import { HomePage } from './app.po';
 
-describe('call-asap4 App', () => {
+describe('HomePage', () => {
   let page: HomePage;
 
   beforeEach(() => {
@@ -9,6 +9,6 @@ describe('call-asap4 App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('What is your emergency?');
+    expect(page.getPageHeader()).toEqual('What is your emergency?');
   });
 });
