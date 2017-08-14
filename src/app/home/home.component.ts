@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../shared/country.service';
 import { ICountry, ICountryName, IEmergencyPhoneNumber } from '../shared/interfaces/country';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     moduleId: module.id,
@@ -18,23 +19,25 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
 
         this._countryService.getCountryName()
-            .subscribe(
+            .switchMap(
                 countryName => {
 
                     this.countryName = countryName;
-                    this._countryService.getCountry(this.countryName.country_name)
-                        .subscribe(
-                            country => {
-                                this.country = country;
-                                this._countryService.getEmergencyPhoneNumbers(this.country)
-                                    .subscribe(
-                                        emergencyPhoneNumbers => this.emergencyPhoneNumbers = emergencyPhoneNumbers
-                                    );
-                             }
-                        )
+                    return this._countryService.getCountry(this.countryName.country_name)
 
                 }
-            )
+            ).switchMap(
+                country => {
+
+                    this.country = country;
+                    return this._countryService.getEmergencyPhoneNumbers(this.country)
+
+                }
+            ).subscribe(
+
+                emergencyPhoneNumbers => this.emergencyPhoneNumbers = emergencyPhoneNumbers
+
+            );
 
     }
 
