@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { ICountry, IEmergencyPhoneNumber, ICountryName } from './interfaces/country';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class CountryService {
