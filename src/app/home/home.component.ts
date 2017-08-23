@@ -11,7 +11,7 @@ import 'rxjs/add/operator/switchMap';
 export class HomeComponent implements OnInit {
 
     countryName: ICountryName;
-    country: ICountry;
+    country: ICountry | boolean;
     emergencyPhoneNumbers: IEmergencyPhoneNumber[]
 
     constructor(private _countryService: CountryService){}
@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
                 country => {
 
                     this.country = country;
+                    console.log(this.country);
                     return this._countryService.getEmergencyPhoneNumbers(this.country)
 
                 }
