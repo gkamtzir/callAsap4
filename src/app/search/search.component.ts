@@ -12,6 +12,7 @@ export class SearchComponent implements OnInit{
     countries: ICountry[];
     emergencyPhoneNumbers: IEmergencyPhoneNumber[];
     country: ICountry;
+    nothing: boolean;
 
 
     constructor(private _countryService: CountryService) {}
