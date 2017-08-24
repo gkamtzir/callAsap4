@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
                 country => {
 
                     this.country = country;
-                    console.log(this.country);
                     return this._countryService.getEmergencyPhoneNumbers(this.country)
 
                 }
