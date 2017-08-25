@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 // Routes
 import { AppRoutes } from './app.routes';
@@ -22,7 +23,8 @@ import { CountryService } from './shared/country.service';
   imports:      [ BrowserModule,
                     HttpModule,
                     FormsModule,
-                    RouterModule.forRoot(AppRoutes)
+                    RouterModule.forRoot(AppRoutes),
+                    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ])
                 ],
   declarations: [ AppComponent, HomeComponent, SearchComponent, AboutComponent, NavbarComponent, CountryComponent ],
   bootstrap:    [ AppComponent ],
