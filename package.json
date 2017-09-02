@@ -2,6 +2,7 @@
   "name": "call-asap4",
   "version": "4.0.0",
   "license": "MIT",
+  "author": "George Kamtziridis <georgekam96@gmail.com>",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
