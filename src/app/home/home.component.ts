@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
                 countryName => {
 
                     this.countryName = countryName;
-                    return this._countryService.getCountry(this.countryName.country_name)
+                    return this._countryService.getCountry(this.countryName.country)
 
                 }
             ).switchMap(

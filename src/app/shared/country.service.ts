@@ -19,7 +19,7 @@ export class CountryService {
 
     getCountryName(): Observable<ICountryName> {
         return this._http
-                    .get('https://freegeoip.net/json/')
+                    .get('http://ip-api.com/json')
                     .map((response: Response) => <ICountryName>response.json())
                     .catch(this.handleError);
     }
