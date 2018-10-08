@@ -10,8 +10,18 @@ import 'rxjs/add/operator/switchMap';
 
 export class HomeComponent implements OnInit {
 
+    /**
+     * User's country name.
+     */
     countryName: ICountryName;
+    /**
+     * User's country object.
+     */
     country: ICountry | boolean;
+    /**
+     * User's country emergency phone
+     * numbers.
+     */
     emergencyPhoneNumbers: IEmergencyPhoneNumber[]
 
     constructor(private _countryService: CountryService){}

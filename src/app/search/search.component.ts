@@ -9,8 +9,18 @@ import { ICountry, IEmergencyPhoneNumber } from '../shared/interfaces/country';
 
 export class SearchComponent implements OnInit{
 
+    /**
+     * All the available countries.
+     */
     countries: ICountry[];
+    /**
+     * The emergency phone numbers of the
+     * choosen country.
+     */
     emergencyPhoneNumbers: IEmergencyPhoneNumber[];
+    /**
+     * The choosen country.
+     */
     country: ICountry;
     nothing: boolean;
 
@@ -26,6 +36,11 @@ export class SearchComponent implements OnInit{
 
     }
 
+    /**
+     * Fetches the emergency phone numbers
+     * of the given country
+     * @param country The country name
+     */
     changeCountry(country: ICountry): void {
 
         this._countryService.getEmergencyPhoneNumbers(country)
