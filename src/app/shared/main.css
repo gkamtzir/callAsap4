@@ -7,6 +7,11 @@ navbar-brand {
 	font-size: 14px;
 	text-decoration: none;
 }
+
+.navbar-nav li {
+	list-style-type: none;
+}
+
 nav li a {
 	margin:10px;
 	float: right;
@@ -43,6 +48,10 @@ button span {
 	padding: auto 50%;
 	margin: auto;
 }
+.toggler-custom-color {
+	border-color: #ffffff !important;
+}
+
 .navbar-brand {
 	font-size: 24px;
 	margin: 10px;
@@ -64,6 +73,10 @@ button span {
 .center {
 	text-align: center;
 }
+.right {
+	text-align: right;
+}
+
 .active {
 	background-color: #ffffff;
 }
