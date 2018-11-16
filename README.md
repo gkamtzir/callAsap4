@@ -12,4 +12,4 @@ Safety first, as they say; a phrase more than applicable in Europe. Each country
 
 Here in CallAsap, we have gathered Europe's emergency phone numbers with reliability and precision. All information can be intuitively and quickly accessed via the "Search" option.
 
-We have also designed our own API from scratch, which is publicly available [here](http://83.212.115.201/api/) and [here](https://github.com/gkamtzir/callAsap-API-PHP) and can be freely used.
+We have also designed our own API from scratch, which is publicly available [here](http://gkamtzir.webpages.auth.gr/api/) and [here](https://github.com/gkamtzir/callAsap-API-PHP) and can be freely used.

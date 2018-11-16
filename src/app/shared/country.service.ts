@@ -26,21 +26,21 @@ export class CountryService {
 
     getCountries(): Observable<ICountry[]> {
         return this._http
-                    .get('http://83.212.115.201/api.php/country')
+                    .get('http://gkamtzir.webpages.auth.gr/api.php/country')
                     .map((response: Response) => <ICountry[]>response.json())
                     .catch(this.handleError);
     }
 
     getCountry(country: string): Observable<ICountry> {
         return this._http
-                    .get('http://83.212.115.201/api.php/country/' + country)
+                    .get('http://gkamtzir.webpages.auth.gr/api.php/country/' + country)
                     .map((response: Response) => <ICountry>response.json())
                     .catch(this.handleError);
     }
 
     getEmergencyPhoneNumbers(country: ICountry): Observable<IEmergencyPhoneNumber[]> {
         return this._http
-                    .get('http://83.212.115.201/api.php/country/emergency/' + country.Name)
+                    .get('http://gkamtzir.webpages.auth.gr/api.php/country/emergency/' + country.Name)
                     .map((response: Response) => <IEmergencyPhoneNumber[]>response.json())
                     .catch(this.handleError);
     }
