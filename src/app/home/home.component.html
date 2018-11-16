@@ -1,10 +1,10 @@
 <div class="container">
 
-  <h1>What is your emergency?</h1>
+  <h1 class="center" i18n>What is your emergency?</h1>
 
   <country *ngIf="country" [country]="country" [emergencies]="emergencyPhoneNumbers"></country>
 
-  <div *ngIf="country === false">
+  <div *ngIf="country === false" i18n>
       Sorry, there are no results for this country.
   </div>
 

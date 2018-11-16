@@ -9,7 +9,14 @@ import { ICountry, IEmergencyPhoneNumber } from '../shared/interfaces/country';
 
 export class CountryComponent {
 
+    /**
+     * The country object to be displayed.
+     */
     @Input() country: ICountry;
+    /**
+     * The emergency phone numbers of the country
+     * object.
+     */
     @Input() emergencies: IEmergencyPhoneNumber;
 
 }
