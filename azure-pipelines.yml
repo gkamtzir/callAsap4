@@ -9,18 +9,20 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: NodeTool@0
+- task: Npm@1
+  displayName: 'npm install'
   inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+    command: install
+    workingDir: src/callAsap4
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
-
-- task: PublishBuildArtifacts@1
+- task: Npm@1
+  displayName: 'Build Angular'
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    command: custom
+    customCommand: run build -- --prod
+    workingDir: src/callAsap4
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'angular'
+    targetPath: 'src/callAsap4/dist'
