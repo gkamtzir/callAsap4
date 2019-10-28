@@ -2,7 +2,7 @@
 
 Find the emergency phone number you need ASAP.
 
-You can visit the website at http://callasap.eu.
+You can visit the website at http://gkamtzir.webpages.auth.gr/callasap/angular.
 
 ## What is CallAsap?
 
