@@ -3,9 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>CallAsap</title>
-  <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <base href="/callasap/angular/">
+  <script>
+    (function() {
+      window['_app_base'] = '/' + window.location.pathname.split('/')[1];
+    })();
+  </script>
 
   <script>
     if (window.document.documentMode) {

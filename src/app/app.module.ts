@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+import { APP_BASE_HREF } from '@angular/common';
 
 // Routes
 import { AppRoutes } from './app.routes';
@@ -28,7 +29,10 @@ import { CountryService } from './shared/country.service';
                 ],
   declarations: [ AppComponent, HomeComponent, SearchComponent, AboutComponent, NavbarComponent, CountryComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [ CountryService ]
+  providers: [ 
+    CountryService,
+    { provide: APP_BASE_HREF, useValue: window['_app_base'] || '/' }
+  ]
 })
 
 export class AppModule { }
