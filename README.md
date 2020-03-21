@@ -1,5 +1,7 @@
 # CallAsap
 
+*Important Note: the project is not longer maintained*
+
 Find the emergency phone number you need ASAP.
 
 You can visit the website at http://gkamtzir.webpages.auth.gr/callasap/angular.
